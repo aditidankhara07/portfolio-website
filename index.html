@@ -1,125 +1,1076 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home | Aditi Dankhara</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aditi Dankhara — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0a0f;
+    --bg2:#12121a;
+    --bg3:#1a1a26;
+    --card:#141420;
+    --border:#ffffff12;
+    --border2:#ffffff20;
+    --accent:#6c63ff;
+    --accent2:#a78bfa;
+    --accent3:#38bdf8;
+    --text:#f0f0f5;
+    --text2:#9999b3;
+    --text3:#5a5a7a;
+    --glass:rgba(255,255,255,0.04);
+    --glass2:rgba(108,99,255,0.08);
+    --radius:12px;
+    --radius2:20px;
+    --font:'Calibri',Georgia,serif;
+  }
+  html{scroll-behavior:smooth;font-size:16px}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.7;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#fff}
+  ::-webkit-scrollbar{width:4px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
 
-</head>
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 6%;height:64px;
+    background:rgba(10,10,15,0.7);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    transition:all .3s;
+  }
+  .nav-logo{
+    font-size:1.1rem;font-weight:700;color:var(--accent2);
+    letter-spacing:.05em;text-decoration:none;
+  }
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{
+    color:var(--text2);text-decoration:none;font-size:.9rem;
+    letter-spacing:.04em;transition:color .2s;position:relative;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+    background:var(--accent);transition:width .3s;
+  }
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a:hover::after{width:100%}
 
-<body>
-  <nav class="navigation">
-    <div class="nav-brand"><h1 style="font-size: larger;" style="color: rgb(255, 255, 255);">αᑯ𝗂𝗍𝗂𝗏𝗂ᑯɦ𝗒α</h1> 
-    </div>
-    <br/>
-    <br/>
+  /* SECTIONS */
+  section{padding:100px 6%}
+  .section-label{
+    font-size:.75rem;letter-spacing:.15em;color:var(--accent);
+    text-transform:uppercase;margin-bottom:1rem;
+  }
+  h2.section-title{
+    font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;
+    color:var(--text);margin-bottom:1.5rem;line-height:1.2;
+  }
+  .section-divider{
+    width:40px;height:2px;background:linear-gradient(90deg,var(--accent),transparent);
+    margin-bottom:3rem;
+  }
 
-    
-      
-
-    <ul class="list-non-bullet list-item-inline">
-      <li>
-        <a class="links" href="index.html">Home</a>
-      </li>
-      <li>
-        <a class="links" href="projects.html">Projects</a>
-      </li>
-      <li>
-        <a class="links" href="certficate.html">Certificates</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="boxdes">
-    <img class="hero-img1" src="images/bg2.jpg" alt="" loading="eager" />
-
-
+  /* HERO */
+  #hero{
+    min-height:100vh;display:flex;align-items:center;
+    padding-top:120px;position:relative;overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;pointer-events:none;overflow:hidden;
+  }
+  .hero-orb{
+    position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;
+  }
+  .orb1{width:600px;height:600px;background:var(--accent);top:-200px;right:-100px}
+  .orb2{width:400px;height:400px;background:var(--accent3);bottom:-100px;left:-100px}
+  .orb3{width:300px;height:300px;background:#a855f7;top:40%;left:40%;opacity:.08}
   
-</div>
+  .hero-grid{
+    display:grid;grid-template-columns:1fr 380px;gap:4rem;
+    align-items:center;max-width:1200px;margin:0 auto;width:100%;
+    position:relative;z-index:1;
+  }
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--glass2);border:1px solid rgba(108,99,255,.2);
+    border-radius:100px;padding:.4rem 1rem;font-size:.8rem;
+    color:var(--accent2);margin-bottom:1.5rem;
+  }
+  .hero-tag .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  
+  h1.hero-title{
+    font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.1;
+    margin-bottom:1.2rem;color:var(--text);
+  }
+  .hero-title .accent{
+    background:linear-gradient(135deg,var(--accent2),var(--accent3));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero-sub{
+    font-size:1.1rem;color:var(--text2);margin-bottom:2.5rem;
+    max-width:520px;line-height:1.8;
+  }
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    padding:.75rem 2rem;border-radius:100px;font-family:var(--font);
+    font-size:.95rem;font-weight:700;cursor:pointer;
+    text-decoration:none;transition:all .25s;letter-spacing:.03em;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent),#8b5cf6);
+    color:#fff;border:none;
+    box-shadow:0 0 30px rgba(108,99,255,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(108,99,255,.5)}
+  .btn-outline{
+    background:transparent;color:var(--text);
+    border:1px solid var(--border2);
+  }
+  .btn-outline:hover{background:var(--glass);border-color:var(--accent);color:var(--accent2)}
 
-  <div class="main-container">
-    
-      
+  .hero-stats{
+    display:flex;gap:2.5rem;margin-top:3rem;
+    padding-top:2rem;border-top:1px solid var(--border);
+  }
+  .hero-stat .num{font-size:1.6rem;font-weight:700;color:var(--accent2)}
+  .hero-stat .lbl{font-size:.8rem;color:var(--text3);letter-spacing:.05em;margin-top:.1rem}
 
-    <div class="introduction">
-      Hello! I'm Aditi Dankhara, a Computer Engineering student passionate about turning data into visualizations. I enjoy blending data analytics and machine learning with creative design. When I'm not analyzing numbers, I'm sketching logos, writing quotes, or reading. I believe in using logic and creativity to solve problems and bring more color to the world!<br />
-      
-    </div>
+  /* PROFILE IMAGE */
+  .hero-image-wrap{
+    display:flex;justify-content:center;align-items:center;position:relative;
+  }
+  .hero-img-ring{
+    width:340px;height:340px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent3),#a855f7);
+    padding:3px;position:relative;
+  }
+  .hero-img-inner{
+    width:100%;height:100%;border-radius:50%;
+    background:linear-gradient(145deg,var(--bg2),var(--bg3));
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .hero-initials{
+    font-size:6rem;font-weight:700;
+    background:linear-gradient(135deg,var(--accent2),var(--accent3));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero-img-badge{
+    position:absolute;bottom:20px;right:-10px;
+    background:var(--bg2);border:1px solid var(--border2);
+    border-radius:var(--radius);padding:.6rem 1rem;
+    font-size:.8rem;color:var(--text2);
+    backdrop-filter:blur(10px);
+  }
+  .hero-img-badge strong{display:block;color:var(--accent2);font-weight:700}
+  .float-chip{
+    position:absolute;background:var(--glass);border:1px solid var(--border2);
+    border-radius:var(--radius);padding:.5rem .9rem;font-size:.8rem;
+    backdrop-filter:blur(10px);white-space:nowrap;
+  }
+  .chip1{top:30px;left:-30px;color:var(--accent3)}
+  .chip2{top:60%;right:-40px;color:#a855f7}
 
-    <div class="sub-container">
+  /* ABOUT */
+  #about{background:var(--bg)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1200px;margin:0 auto}
+  .about-text p{color:var(--text2);font-size:1.05rem;line-height:1.9;margin-bottom:1.2rem}
+  .about-text p span{color:var(--accent2);font-weight:700}
+  .thinking-flow{
+    display:flex;flex-direction:column;gap:0;margin-top:2.5rem;
+  }
+  .flow-step{
+    display:flex;align-items:flex-start;gap:1rem;
+    padding:1rem 1.2rem;border-radius:var(--radius);
+    transition:background .2s;
+  }
+  .flow-step:hover{background:var(--glass)}
+  .flow-num{
+    width:32px;height:32px;border-radius:50%;
+    background:var(--glass2);border:1px solid rgba(108,99,255,.3);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.75rem;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:.1rem;
+  }
+  .flow-content strong{color:var(--text);display:block;margin-bottom:.2rem;font-size:.95rem}
+  .flow-content span{color:var(--text3);font-size:.85rem}
 
-      <section class="section">
-        <h1>Projects</h1>
-        <p class="container-center1">
-          I learn to implement ideas in projects. Projects to make difference.
-          Watch my hosted projects and share your feedback.
-        </p>
-        <div style="text-align: center">
-          <a href="projects.html" class="link secondry-link ow">See Projects</a>
-        </div>
-      </section>
+  .highlight-cards{display:flex;flex-direction:column;gap:1rem}
+  .h-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:var(--radius2);padding:1.5rem;
+    transition:all .25s;position:relative;overflow:hidden;
+  }
+  .h-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .h-card:hover{border-color:rgba(108,99,255,.3);transform:translateX(4px)}
+  .h-card:hover::before{opacity:1}
+  .h-card-icon{
+    width:40px;height:40px;border-radius:10px;
+    background:var(--glass2);display:flex;align-items:center;
+    justify-content:center;font-size:1.2rem;margin-bottom:1rem;
+  }
+  .h-card strong{color:var(--text);display:block;margin-bottom:.4rem;font-size:1rem}
+  .h-card p{color:var(--text3);font-size:.85rem;line-height:1.6}
 
-      <section class="section">
-        <h1>Skills</h1>
-        <div class="container-center1">
-          <a class="button">Python,SQL,C,HTML,CSS</a>
-          <a class="button">Pandas , Numpy , Matplotlib</a>
-          <a class="button">PowerBI , Excel , Powerpoint , MySql , Google Sheets , Jira</a>
-          <a class="button">Jupyter Notebook , Visual Studio Code</a>
-          <a class="button">Data Analysis: Data cleaning and preprocessing</a>
-          <a class="button">Data Visualization: Chart creation, Interactive dashboards, Infographics</a>
-          
-        </div>
-      </section>
-    
-      <section class="section">
-        <h1>Certificates</h1>
-        
-        <div style="text-align: center">
-          <a href="certificate.html" class="link secondry-link ow">See certficatess</a>
-        </div>
-      </section>
-    </div>
+  /* PROJECTS */
+  #projects{background:var(--bg2)}
+  .projects-wrap{max-width:1200px;margin:0 auto}
+  .filter-row{
+    display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:3rem;
+  }
+  .filter-btn{
+    padding:.4rem 1.1rem;border-radius:100px;font-family:var(--font);
+    font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;
+    border:1px solid var(--border2);background:transparent;
+    color:var(--text2);letter-spacing:.03em;
+  }
+  .filter-btn.active,.filter-btn:hover{
+    background:var(--accent);color:#fff;border-color:var(--accent);
+  }
+  .projects-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+    gap:1.5rem;
+  }
+  .project-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:var(--radius2);padding:2rem;
+    transition:all .3s;cursor:pointer;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .project-card::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(108,99,255,.06),transparent);
+    opacity:0;transition:opacity .3s;pointer-events:none;
+  }
+  .project-card:hover{
+    border-color:rgba(108,99,255,.35);
+    transform:translateY(-4px);
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+  }
+  .project-card:hover::after{opacity:1}
+  .project-tag{
+    display:inline-block;padding:.25rem .8rem;border-radius:100px;
+    font-size:.72rem;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;margin-bottom:1.2rem;
+  }
+  .tag-data{background:rgba(56,189,248,.1);color:var(--accent3)}
+  .tag-ml{background:rgba(168,85,247,.1);color:#a855f7}
+  .tag-bi{background:rgba(34,197,94,.1);color:#22c55e}
+  .tag-python{background:rgba(108,99,255,.1);color:var(--accent2)}
+  
+  .project-card h3{color:var(--text);font-size:1.15rem;margin-bottom:1rem;font-weight:700;line-height:1.3}
+  
+  .case-row{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.2rem;flex:1}
+  .case-item label{
+    font-size:.7rem;letter-spacing:.12em;color:var(--accent);
+    text-transform:uppercase;font-weight:700;display:block;margin-bottom:.2rem;
+  }
+  .case-item p{color:var(--text2);font-size:.88rem;line-height:1.6}
 
-  </div>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/><br/>
-<br/><br/>
-<br/>
-<footer class="footer">
-  <div class="footer-header">Connect with me</div>
-  <ul class="list-non-bullet combine">
-    <li>
-      <a class="links github" href="https://github.com/aditidankhara07">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-    </li>
-    <li>
-      <a class="links linkedin" href="https://www.linkedin.com/in/aditi-dankhara">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-    </li>
-    <li>
-      <a class="links twitter" href="https://twitter.com/aditidankhara">
-        <i class="fab fa-twitter"></i> Twitter
-      </a>
-    </li>
-    <li>
-      <a class="links instagram" href="https://www.instagram.com/aditidankhara">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
-    </li>
+  .project-impact{
+    display:flex;gap:.8rem;flex-wrap:wrap;margin-top:auto;padding-top:1.2rem;
+    border-top:1px solid var(--border);
+  }
+  .impact-chip{
+    background:var(--glass2);border:1px solid rgba(108,99,255,.15);
+    border-radius:100px;padding:.3rem .8rem;
+    font-size:.78rem;color:var(--accent2);font-weight:700;
+  }
+  .project-tools{
+    display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;
+  }
+  .tool-tag{
+    background:var(--bg3);border:1px solid var(--border);
+    border-radius:6px;padding:.2rem .6rem;font-size:.75rem;color:var(--text3);
+  }
+
+  /* SKILLS */
+  #skills{background:var(--bg)}
+  .skills-wrap{max-width:1200px;margin:0 auto}
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .skill-cat{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:var(--radius2);padding:2rem;
+    transition:border-color .2s;
+  }
+  .skill-cat:hover{border-color:var(--border2)}
+  .skill-cat-header{
+    display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem;
+  }
+  .skill-cat-icon{
+    width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  }
+  .skill-cat-header strong{color:var(--text);font-size:1rem;font-weight:700}
+  .skill-items{display:flex;flex-direction:column;gap:1rem}
+  .skill-item{}
+  .skill-row{display:flex;justify-content:space-between;margin-bottom:.4rem}
+  .skill-name{color:var(--text2);font-size:.88rem}
+  .skill-pct{color:var(--accent2);font-size:.82rem;font-weight:700}
+  .skill-bar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+  .skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1.2s ease}
+
+  /* EXPERIENCE */
+  #experience{background:var(--bg2)}
+  .exp-wrap{max-width:800px;margin:0 auto}
+  .timeline{position:relative;padding-left:3rem}
+  .timeline::before{
+    content:'';position:absolute;left:14px;top:0;bottom:0;
+    width:1px;background:linear-gradient(to bottom,var(--accent),transparent);
+  }
+  .tl-item{position:relative;padding-bottom:3rem}
+  .tl-dot{
+    position:absolute;left:-3rem;width:28px;height:28px;border-radius:50%;
+    background:var(--bg2);border:2px solid var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    top:4px;
+  }
+  .tl-dot-inner{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .tl-date{font-size:.78rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
+  .tl-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:var(--radius2);padding:1.8rem;
+    transition:border-color .2s;
+  }
+  .tl-card:hover{border-color:var(--border2)}
+  .tl-role{color:var(--text);font-size:1.1rem;font-weight:700;margin-bottom:.2rem}
+  .tl-company{color:var(--accent2);font-size:.9rem;margin-bottom:1.2rem;font-weight:700}
+  .tl-bullets{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .tl-bullets li{
+    color:var(--text2);font-size:.88rem;padding-left:1.2rem;
+    position:relative;line-height:1.6;
+  }
+  .tl-bullets li::before{
+    content:'▹';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:.2rem;
+  }
+
+  /* HOW I THINK */
+  #thinking{background:var(--bg)}
+  .thinking-wrap{max-width:1000px;margin:0 auto}
+  .process-flow{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1rem;position:relative;margin-top:1rem;
+  }
+  .process-flow::before{
+    content:'';position:absolute;top:38px;left:12.5%;right:12.5%;
+    height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    z-index:0;
+  }
+  .proc-step{text-align:center;position:relative;z-index:1}
+  .proc-icon{
+    width:76px;height:76px;border-radius:50%;margin:0 auto 1.2rem;
+    background:var(--card);border:1px solid rgba(108,99,255,.3);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;position:relative;
+    transition:all .3s;
+  }
+  .proc-step:hover .proc-icon{
+    background:var(--glass2);border-color:var(--accent);
+    box-shadow:0 0 30px rgba(108,99,255,.2);
+  }
+  .proc-num{
+    position:absolute;top:-4px;right:-4px;width:22px;height:22px;
+    border-radius:50%;background:var(--accent);
+    font-size:.65rem;font-weight:700;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .proc-step strong{display:block;color:var(--text);font-size:1rem;margin-bottom:.4rem;font-weight:700}
+  .proc-step p{color:var(--text3);font-size:.8rem;line-height:1.6}
+
+  /* CONTACT */
+  #contact{background:var(--bg2)}
+  .contact-wrap{max-width:700px;margin:0 auto;text-align:center}
+  .contact-intro{color:var(--text2);font-size:1.05rem;margin-bottom:3rem;line-height:1.8}
+  .contact-form{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:var(--radius2);padding:2.5rem;text-align:left;
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+  .form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+  .form-group label{font-size:.8rem;color:var(--text2);letter-spacing:.04em;font-weight:700}
+  .form-group input,.form-group textarea{
+    background:var(--bg3);border:1px solid var(--border);
+    border-radius:var(--radius);padding:.75rem 1rem;
+    color:var(--text);font-family:var(--font);font-size:.95rem;
+    outline:none;transition:border-color .2s;resize:vertical;
+  }
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}
+  .form-group textarea{min-height:120px}
+  .social-row{
+    display:flex;justify-content:center;gap:1.2rem;margin-top:3rem;
+  }
+  .social-link{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--card);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text2);text-decoration:none;font-size:.9rem;font-weight:700;
+    transition:all .2s;
+  }
+  .social-link:hover{background:var(--glass2);border-color:var(--accent);color:var(--accent2);transform:translateY(-3px)}
+  .social-link svg{width:18px;height:18px;fill:currentColor}
+
+  /* FOOTER */
+  footer{
+    text-align:center;padding:2rem 6%;
+    border-top:1px solid var(--border);
+    color:var(--text3);font-size:.82rem;
+  }
+  footer span{color:var(--accent2)}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+  .reveal-left{opacity:0;transform:translateX(-30px);transition:all .7s ease}
+  .reveal-left.visible{opacity:1;transform:none}
+  .reveal-right{opacity:0;transform:translateX(30px);transition:all .7s ease}
+  .reveal-right.visible{opacity:1;transform:none}
+
+  /* MOBILE */
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero-image-wrap{order:-1}
+    .hero-img-ring{width:220px;height:220px}
+    .hero-initials{font-size:4rem}
+    .chip1,.chip2,.hero-img-badge{display:none}
+    .hero-stats{justify-content:center}
+    .about-grid{grid-template-columns:1fr}
+    .skills-grid{grid-template-columns:1fr}
+    .process-flow{grid-template-columns:repeat(2,1fr)}
+    .process-flow::before{display:none}
+    .form-row{grid-template-columns:1fr}
+    .projects-grid{grid-template-columns:1fr}
+    section{padding:70px 5%}
+    .timeline{padding-left:2rem}
+    .tl-dot{left:-2rem}
+  }
+  @media(max-width:600px){
+    .nav-links{display:none}
+    h2.section-title{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">AD</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#thinking">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <p>&copy; @rights reserved Aditi Dankhara</p>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-title">
+        I turn complex data into<br/>
+        <span class="accent">simple decisions.</span>
+      </h1>
+      <p class="hero-sub">
+        Data Analyst &amp; Python Developer who finds patterns where others see noise. 
+        I build systems that think — and dashboards that speak.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary">View My Work →</a>
+        <a href="#contact" class="btn btn-outline">Let's Connect</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">6+</div>
+          <div class="lbl">Projects Delivered</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3</div>
+          <div class="lbl">Industry Internships</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">8.66</div>
+          <div class="lbl">CGPA</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-img-ring">
+        <div class="hero-img-inner">
+          <span class="hero-initials">AD</span>
+        </div>
+      </div>
+      <div class="float-chip chip1">Python · SQL · Power BI</div>
+      <div class="float-chip chip2">Data → Insight → Action</div>
+      <div class="hero-img-badge">
+        <strong>GEC Bhavnagar</strong>
+        Computer Engineering '25
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal-left">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Beyond the numbers,<br/>there's a story.</h2>
+      <div class="section-divider"></div>
+      <p>I'm <span>Aditi Dankhara</span>, a Computer Engineering graduate from GEC Bhavnagar with a deep obsession for making data useful. Currently working as a <span>Junior Data Analyst &amp; Python Developer</span> at Vistaar Intuitive Solution, Rajkot.</p>
+      <p>My work lives at the intersection of analytics and engineering — from detecting vehicle traffic patterns in real-time trajectory data to building sentiment dashboards that surface what customers actually feel.</p>
+      <p>When I'm not wrangling datasets, I'm sketching logos, writing quotes, or reading. I believe the best insights come from equal parts <span>logic and curiosity</span>.</p>
+      <div class="thinking-flow">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <div class="flow-content">
+            <strong>Observe</strong>
+            <span>Dive into raw data. No assumptions. Just patterns.</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <div class="flow-content">
+            <strong>Analyze</strong>
+            <span>Apply statistics, segmentation, and domain thinking.</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <div class="flow-content">
+            <strong>Simplify</strong>
+            <span>Translate complexity into something a stakeholder can act on.</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <div class="flow-content">
+            <strong>Deliver</strong>
+            <span>Visual stories and models that create measurable impact.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight-cards reveal-right">
+      <div class="h-card">
+        <div class="h-card-icon">🎯</div>
+        <strong>Problem-First Thinking</strong>
+        <p>I start with the question, not the tool. Every dataset is a puzzle waiting for the right frame.</p>
+      </div>
+      <div class="h-card">
+        <div class="h-card-icon">📊</div>
+        <strong>Data Storytelling</strong>
+        <p>Numbers without context are noise. I translate statistical findings into visual narratives that drive decisions.</p>
+      </div>
+      <div class="h-card">
+        <div class="h-card-icon">⚡</div>
+        <strong>End-to-End Ownership</strong>
+        <p>From raw CSV to boardroom dashboard — I take projects from messy data to polished deliverables.</p>
+      </div>
+      <div class="h-card">
+        <div class="h-card-icon">🔍</div>
+        <strong>Anomaly Intuition</strong>
+        <p>Trained on real-time vehicle trajectory data, I have a sharp eye for outliers and unexpected patterns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-wrap">
+    <div class="section-label reveal">Selected Work</div>
+    <h2 class="section-title reveal">Projects that made<br/>an actual difference.</h2>
+    <div class="section-divider reveal"></div>
+    <div class="filter-row reveal">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="data">Data Analysis</button>
+      <button class="filter-btn" data-filter="bi">BI / Dashboards</button>
+      <button class="filter-btn" data-filter="ml">ML / AI</button>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card reveal" data-cat="data ml">
+        <span class="project-tag tag-data">Data Analysis</span>
+        <h3>Real-Time Anomaly Detection System</h3>
+        <div class="case-row">
+          <div class="case-item">
+            <label>Problem</label>
+            <p>Live data streams had sudden spikes and anomalies going undetected, causing operational blind spots.</p>
+          </div>
+          <div class="case-item">
+            <label>Approach</label>
+            <p>Near real-time pipeline with Isolation Forest + threshold-based filtering on streaming data.</p>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">Isolation Forest</span>
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Pandas</span>
+        </div>
+        <div class="project-impact">
+          <span class="impact-chip">Live Alerting</span>
+          <span class="impact-chip">High-Risk Detection</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal" data-cat="bi">
+        <span class="project-tag tag-bi">BI Dashboard</span>
+        <h3>Project Management KPI Dashboard</h3>
+        <div class="case-row">
+          <div class="case-item">
+            <label>Problem</label>
+            <p>Project reporting was manual, slow, and gave decision-makers no real-time visibility.</p>
+          </div>
+          <div class="case-item">
+            <label>Approach</label>
+            <p>Designed a Power BI dashboard with dynamic KPI tracking and multi-dimensional filters.</p>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">DAX</span>
+          <span class="tool-tag">Excel</span>
+        </div>
+        <div class="project-impact">
+          <span class="impact-chip">↑ 60% Efficiency</span>
+          <span class="impact-chip">↑ 15% Profitability</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal" data-cat="ml">
+        <span class="project-tag tag-ml">AI / LLM</span>
+        <h3>AI Data Insights Assistant</h3>
+        <div class="case-row">
+          <div class="case-item">
+            <label>Problem</label>
+            <p>Analysts spent hours manually interpreting datasets — no scalable, repeatable way to extract insights.</p>
+          </div>
+          <div class="case-item">
+            <label>Approach</label>
+            <p>Built an LLM-powered tool using prompt engineering to auto-generate analysis from structured data.</p>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">LLM API</span>
+          <span class="tool-tag">Prompt Eng.</span>
+        </div>
+        <div class="project-impact">
+          <span class="impact-chip">Automated Analysis</span>
+          <span class="impact-chip">Prompt-Driven</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card reveal" data-cat="bi data">
+        <span class="project-tag tag-bi">BI / NLP</span>
+        <h3>Customer Feedback Sentiment Dashboard</h3>
+        <div class="case-row">
+          <div class="case-item">
+            <label>Problem</label>
+            <p>Customer feedback was unstructured and unread — teams had no way to spot trends or urgent issues.</p>
+          </div>
+          <div class="case-item">
+            <label>Approach</label>
+            <p>Sentiment classification pipeline with Tableau dashboard tracking sentiment over time and by product.</p>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">NLP</span>
+          <span class="tool-tag">Tableau</span>
+        </div>
+        <div class="project-impact">
+          <span class="impact-chip">Sentiment Trends</span>
+          <span class="impact-chip">Risk Alerts</span>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card reveal" data-cat="data">
+        <span class="project-tag tag-python">Python · SQL</span>
+        <h3>E-Commerce Sales & Customer Analysis</h3>
+        <div class="case-row">
+          <div class="case-item">
+            <label>Problem</label>
+            <p>Sales data was siloed — no unified view of customer segments, product performance, or revenue drivers.</p>
+          </div>
+          <div class="case-item">
+            <label>Approach</label>
+            <p>Full EDA pipeline: data cleaning, cohort segmentation, product-level revenue analysis.</p>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">SQL</span>
+          <span class="tool-tag">Pandas</span>
+          <span class="tool-tag">Matplotlib</span>
+        </div>
+        <div class="project-impact">
+          <span class="impact-chip">↑ 20% Strategy</span>
+          <span class="impact-chip">↑ 10% Revenue</span>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card reveal" data-cat="bi">
+        <span class="project-tag tag-bi">Excel / BI</span>
+        <h3>MIS & Goal Tracker Dashboard</h3>
+        <div class="case-row">
+          <div class="case-item">
+            <label>Problem</label>
+            <p>KPI tracking across departments was scattered in spreadsheets with no single source of truth.</p>
+          </div>
+          <div class="case-item">
+            <label>Approach</label>
+            <p>Dynamic Excel dashboard with pivot tables, conditional formatting, and multi-metric views.</p>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">MS Excel</span>
+          <span class="tool-tag">Pivot Tables</span>
+          <span class="tool-tag">VBA Formulas</span>
+        </div>
+        <div class="project-impact">
+          <span class="impact-chip">↑ 40% Productivity</span>
+          <span class="impact-chip">Goal Visibility</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-wrap">
+    <div class="section-label reveal">Technical Arsenal</div>
+    <h2 class="section-title reveal">Tools of the trade.</h2>
+    <div class="section-divider reveal"></div>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon" style="background:rgba(108,99,255,.12)">🐍</div>
+          <strong>Data & Programming</strong>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">SQL / MySQL</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Pandas / NumPy</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Data Cleaning / EDA</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="92%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon" style="background:rgba(34,197,94,.1)">📊</div>
+          <strong>BI & Visualization</strong>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Power BI</span><span class="skill-pct">87%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="87%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Tableau</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Advanced Excel</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Matplotlib / Seaborn</span><span class="skill-pct">82%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="82%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon" style="background:rgba(168,85,247,.1)">🤖</div>
+          <strong>ML & Analytics</strong>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Machine Learning</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="75%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Anomaly Detection</span><span class="skill-pct">82%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="82%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Time Series Analysis</span><span class="skill-pct">78%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="78%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Statistical Analysis</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:0" data-w="85%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-wrap">
+    <div class="section-label reveal">Career</div>
+    <h2 class="section-title reveal">Where I've made<br/>an impact.</h2>
+    <div class="section-divider reveal"></div>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-date">Jan 2025 – Present</div>
+        <div class="tl-card">
+          <div class="tl-role">Junior Data Analyst & Python Developer</div>
+          <div class="tl-company">Vistaar Intuitive Solution · Rajkot</div>
+          <ul class="tl-bullets">
+            <li>Built real-time and historical data analysis systems for business intelligence use cases</li>
+            <li>Identified traffic intersections using vehicle trajectory data — analyzing velocity, distance, and directional angles</li>
+            <li>Applied filtering and threshold-based techniques to reduce noise across large-scale datasets</li>
+            <li>Contributed to stock market time-series analysis and supported development of predictive models</li>
+            <li>Generated actionable insights from structured data to improve operational performance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-date">Oct 2024 – Dec 2024</div>
+        <div class="tl-card">
+          <div class="tl-role">Data Science Intern</div>
+          <div class="tl-company">Vistaar Intuitive Solution · Rajkot</div>
+          <ul class="tl-bullets">
+            <li>Analyzed datasets for business insights using Python and SQL</li>
+            <li>Created visual reports and interactive dashboards for decision-making</li>
+            <li>Applied statistical techniques for data validation and trend analysis</li>
+            <li>Collaborated cross-functionally to improve model outputs and reporting accuracy</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-date">June 2024 – July 2024</div>
+        <div class="tl-card">
+          <div class="tl-role">Data Analytics & Machine Learning Intern</div>
+          <div class="tl-company">InfoLabz IT Services · Ahmedabad</div>
+          <ul class="tl-bullets">
+            <li>Performed data analysis and visualization using Pandas and Excel</li>
+            <li>Built a predictive model for house price estimation using regression techniques</li>
+            <li>Worked with real-world datasets including API-based data sources</li>
+            <li>Created reports and visual insights for trend interpretation and stakeholder communication</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW I THINK -->
+<section id="thinking">
+  <div class="thinking-wrap">
+    <div class="section-label reveal">My Process</div>
+    <h2 class="section-title reveal">How I approach<br/>every problem.</h2>
+    <div class="section-divider reveal"></div>
+    <div class="process-flow">
+      <div class="proc-step reveal">
+        <div class="proc-icon">
+          <span class="proc-num">1</span>
+          🔍
+        </div>
+        <strong>Understand</strong>
+        <p>Ask the right questions before touching any data. What decision does this serve?</p>
+      </div>
+      <div class="proc-step reveal">
+        <div class="proc-icon">
+          <span class="proc-num">2</span>
+          🧹
+        </div>
+        <strong>Clean & Explore</strong>
+        <p>EDA first. Find distributions, outliers, and hidden structure in the raw data.</p>
+      </div>
+      <div class="proc-step reveal">
+        <div class="proc-icon">
+          <span class="proc-num">3</span>
+          ⚙️
+        </div>
+        <strong>Model & Analyze</strong>
+        <p>Apply the right technique — stats, ML, or visualization — not the fanciest one.</p>
+      </div>
+      <div class="proc-step reveal">
+        <div class="proc-icon">
+          <span class="proc-num">4</span>
+          🎯
+        </div>
+        <strong>Deliver Impact</strong>
+        <p>Turn findings into clear, actionable insights that stakeholders actually use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal">Let's build something<br/>with data.</h2>
+    <div class="section-divider reveal" style="margin:0 auto 2rem"></div>
+    <p class="contact-intro reveal">
+      I'm currently open to full-time roles, freelance analytics projects, and research collaborations. 
+      If you have data that needs meaning, I'd love to hear from you.
+    </p>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your name"/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" placeholder="What's this about?"/>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell me about your project or opportunity..."></textarea>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;border-radius:var(--radius)">Send Message →</button>
+    </div>
+    <div class="social-row reveal">
+      <!-- GitHub -->
+      <a href="https://github.com/aditidankhara07" class="social-link" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/aditi-dankhara" class="social-link" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- Email -->
+      <a href="mailto:aditidankhara@gmail.com" class="social-link" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <!-- Twitter -->
+      <a href="https://twitter.com/aditidankhara" class="social-link" title="Twitter / X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built with care by <span>Aditi Dankhara</span> · 2025</p>
+  <p style="margin-top:.4rem;font-size:.75rem">aditidankhara@gmail.com · Rajkot, Gujarat</p>
 </footer>
 
-</body>
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // animate skill bars
+      const bars = e.target.querySelectorAll ? e.target.querySelectorAll('.skill-fill') : [];
+      bars.forEach(b=>{ if(b.dataset.w) b.style.width = b.dataset.w; });
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
 
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+
+// skill bars observer
+const skillObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.skill-fill').forEach(b=>{ if(b.dataset.w) b.style.width = b.dataset.w; });
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.skill-cat').forEach(el=>skillObserver.observe(el));
+
+// Project filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    projectCards.forEach(card=>{
+      const cats = card.dataset.cat || '';
+      if(f==='all' || cats.includes(f)){
+        card.style.display='flex';
+        setTimeout(()=>card.style.opacity='1',10);
+      } else {
+        card.style.opacity='0';
+        setTimeout(()=>card.style.display='none',300);
+      }
+    });
+  });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 60){
+    nav.style.background='rgba(10,10,15,0.92)';
+  } else {
+    nav.style.background='rgba(10,10,15,0.7)';
+  }
+});
+
+// Stagger delays
+document.querySelectorAll('.projects-grid .project-card').forEach((el,i)=>{
+  el.style.transitionDelay = (i*0.08)+'s';
+});
+document.querySelectorAll('.highlight-cards .h-card').forEach((el,i)=>{
+  el.style.transitionDelay = (i*0.1)+'s';
+});
+</script>
+</body>
 </html>
